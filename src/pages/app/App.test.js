@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders the app with a button , a quote and a button', () => {
   render(<App />);
   
-  const text = screen.getByText(/ola mundo/i);
+  const buttonEl = screen.getByRole('button');
+  const imageEl = screen.getByRole('img')
+  const textEl = screen.getByRole('quote');
 
-  expect(text).toBeInTheDocument;
+  expect(buttonEl).toBeInTheDocument;
+  expect(imageEl).toBeInTheDocument;
+  expect(textEl).toBeInTheDocument;
 });
