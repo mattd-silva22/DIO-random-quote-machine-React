@@ -14,6 +14,7 @@ body {
     background: url(${bgImg}) ;
     background-size: cover;
     background-position: center;
+    
 }
 
 

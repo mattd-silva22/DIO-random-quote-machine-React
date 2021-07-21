@@ -7,13 +7,13 @@ import naturoImg  from '../../img/naruto.png'
 
 
 type QuoteType = {
-  content : string
-  author : string 
+  content : string;
+  author : string;
 }
 
 function App() {
 
-  const [ quote , setQuote] = useState<QuoteType>({content : 'ze' , author : 'zeze'});
+  const [ quote , setQuote] = useState<QuoteType>({content: 'loading' , author : 'loading'});
 
   async function getRandomQuote() {
     
@@ -21,11 +21,21 @@ function App() {
 
      let quoteData = await res.json()
 
-     return  setQuote({ content : quoteData.content, author : quoteData.author});
+     return setQuote({ content : quoteData.content, author : quoteData.author});
 
 
 
   }
+
+  useEffect(()=>{
+
+    
+    getRandomQuote()
+    console.log('add iniciou')
+
+
+  },[])
+
 
   
   
@@ -33,7 +43,7 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle/>
-        <HeaderNavbar titleText='naturo quotes'/>
+        <HeaderNavbar titleText='Random Quote'/>
         <Content>
             <ContentContainer>
               <QuoteContainer>
@@ -43,7 +53,7 @@ function App() {
               </QuoteContainer>
 
               <ImageContianer>
-                <button onClick={getRandomQuote}>clique aqui</button>
+                <button onClick={getRandomQuote}>New Quote</button>
               </ImageContianer>
 
             
@@ -78,14 +88,18 @@ const ContentContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 
-  border: 1px solid blue;
+
+  
 
 `
 
 const QuoteContainer = styled.div`
   flex: 2;
   width: 100%;
+  align-items: center;
+  justify-content: center;
   
 
 `
@@ -93,7 +107,15 @@ const QuoteContainer = styled.div`
 const ImageContianer = styled.div`
   flex: 1;
   width: 100%;
-  background-color: honeydew;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px ;
+
+  button {
+    padding: 15px 50px;
+  }
 
 
 `
