@@ -16,7 +16,7 @@ export function Quote(props:QuoteProps) {
     return (
         <div>
            <p role='quote'>{props.content}</p> 
-           <p>{props.author}</p>
+           <p> - {props.author}</p>
         </div>
     )
 

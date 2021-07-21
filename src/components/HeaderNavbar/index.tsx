@@ -2,7 +2,11 @@
 
 import './styles.scss'
 
-export function HeaderNavbar() {
+
+type HeaderNavbarProps = {
+    titleText: string;
+}
+export function HeaderNavbar(props:HeaderNavbarProps) {
 
 
     return (
@@ -10,25 +14,10 @@ export function HeaderNavbar() {
         <header className={'header-navbar'}>
             <div className="container">
                 <div>
-                    <h1>logo marca</h1>
+                    <h1>{props.titleText}</h1>
                 </div>
 
-                <nav className={'nav-top'}>
-                    <ul>
-                        <li>
-                            <a href="#">link 1</a>
-                        </li>
-
-                        <li>
-                            <a href="#">link 1</a>
-                        </li>
-
-                        <li>
-                            <a href="#">link 1</a>
-                        </li>
-                    </ul>
-                </nav>
-
+              
             </div>
         </header>
 

@@ -1,12 +1,31 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import styled from "styled-components";
 import { GlobalStyle } from "../../components/style/GlobalStyle";
 import { Quote } from "../../components/Quote"
 import { HeaderNavbar } from "../../components/HeaderNavbar";
+import naturoImg  from '../../img/naruto.png'
 
 
+type QuoteType = {
+  content : string
+  author : string 
+}
 
 function App() {
+
+  const [ quote , setQuote] = useState<QuoteType>({content : 'ze' , author : 'zeze'});
+
+  async function getRandomQuote() {
+    
+     let res = await fetch('http://api.quotable.io/random')
+
+     let quoteData = await res.json()
+
+     return  setQuote({ content : quoteData.content, author : quoteData.author});
+
+
+
+  }
 
   
   
@@ -14,17 +33,17 @@ function App() {
   return (
     <Fragment>
       <GlobalStyle/>
-        <HeaderNavbar/>
+        <HeaderNavbar titleText='naturo quotes'/>
         <Content>
             <ContentContainer>
               <QuoteContainer>
 
-                <Quote content="teste" author="teste autor"/>
+                <Quote content={quote.content} author={quote.author}/>
 
               </QuoteContainer>
 
               <ImageContianer>
-                <img src="https://picsum.photos/400/300" alt="" />
+                <button onClick={getRandomQuote}>clique aqui</button>
               </ImageContianer>
 
             
@@ -67,7 +86,7 @@ const ContentContainer = styled.div`
 const QuoteContainer = styled.div`
   flex: 2;
   width: 100%;
-  background-color: green;
+  
 
 `
 
