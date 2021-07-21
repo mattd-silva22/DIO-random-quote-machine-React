@@ -1,19 +1,25 @@
 import { Fragment } from "react";
 import styled from "styled-components";
 import { GlobalStyle } from "../../components/style/GlobalStyle";
+import { Quote } from "../../components/Quote"
+import { HeaderNavbar } from "../../components/HeaderNavbar";
 
 
 
 function App() {
+
+  
+  
+
   return (
     <Fragment>
       <GlobalStyle/>
+        <HeaderNavbar/>
         <Content>
             <ContentContainer>
               <QuoteContainer>
 
-              <p role='quote'>ola mundo</p>
-              <button>isto e um botao</button>
+                <Quote content="teste" author="teste autor"/>
 
               </QuoteContainer>
 
@@ -40,7 +46,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
 
-  border: 1px solid red;
+  
   
   
 
